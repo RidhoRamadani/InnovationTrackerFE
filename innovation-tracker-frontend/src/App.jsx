@@ -19,6 +19,7 @@ import ValueChainInnovation from "./component/page/value-chain-innovation/Root.j
 import BusinessPerformaceImprovement from "./component/page/business-performance-improvement/Root.jsx";
 import Scoring from "./component/page/suggestion-system/Scoring.jsx";
 import EditScoring from "./component/page/suggestion-system/EditScoring.jsx";
+import NotifikasiIndex from "./component/page/notifikasi/Index.jsx";
 
 export default function App() {
   const [listMenu, setListMenu] = useState([]);
@@ -83,6 +84,10 @@ export default function App() {
           {
             path: "/editScoring",
             element: <EditScoring />,
+          },
+          {
+            path: "/notifikasi",
+            element: <NotifikasiIndex />,
           },
           {
             path: "/*",

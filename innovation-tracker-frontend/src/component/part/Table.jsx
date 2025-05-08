@@ -61,6 +61,7 @@ export default function Table({
               <Icon
                 key={key + action}
                 name="toggle-on"
+                
                 type="Bold"
                 cssClass="btn px-1 py-0 text-primary"
                 title="Disable"

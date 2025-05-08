@@ -120,6 +120,7 @@ export default function Header({ displayName, roleName, listMenu }) {
                               className="fi fi-rr-circle-user"
                               style={{ color: "white", fontSize: "28px" }}
                             ></i>
+                            
                           </a>
                           <ul
                             className="dropdown-menu"
@@ -276,7 +277,7 @@ export default function Header({ displayName, roleName, listMenu }) {
                           >
                             <i
                               className="fi fi-rr-circle-user"
-                              style={{ color: "white", fontSize: "30px" }}
+                              style={{ color: "white", fontSize: "30px", marginRight: "10px" }}
                             ></i>
                           </a>
                           <ul
@@ -287,8 +288,8 @@ export default function Header({ displayName, roleName, listMenu }) {
                               <a className="dropdown-item" href="/profile">
                                 PROFILE
                               </a>
-                            </li>
-                            <li className="m-0">
+                            </li> */}
+                            {/* <li className="m-0">
                               <a className="dropdown-item" href="/notification">
                                 NOTIFICATION
                                 <span
@@ -300,10 +301,11 @@ export default function Header({ displayName, roleName, listMenu }) {
                                   {countNotifikasi}
                                 </span>
                               </a>
-                            </li>
-                            <li>
+                            </li> */}
+                            {/* <li>
                               <hr className="dropdown-divider" />
                             </li> */}
+                            
                             <li>
                               <a
                                 className="dropdown-item text-danger"
@@ -313,6 +315,14 @@ export default function Header({ displayName, roleName, listMenu }) {
                               </a>
                             </li>
                           </ul>
+                          <a href="/notifikasi" style={{ textDecoration: "none" }}>
+                            <i
+                              className="fi fi-rr-envelope"
+                              style={{ color: "white", fontSize: "30px" }}
+                            ></i>
+                          </a>
+
+
                         </div>
                       </div>
                     </div>
