@@ -107,7 +107,7 @@ export default function NotifikasiIndex() {
               "success"
             );
             handleSetCurrentPage(currentFilter.page);
-            setIsLoading(false);
+            setIsLoading(true);
           }
     }
   }

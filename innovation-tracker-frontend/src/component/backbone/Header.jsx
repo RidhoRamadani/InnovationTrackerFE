@@ -19,26 +19,32 @@ export default function Header({ displayName, roleName, listMenu }) {
     }
   }, [activeUser]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await UseFetch(
-          API_LINK + "Utilities/GetDataCountingNotifikasi",
-          { application: APPLICATION_ID }
-        );
+ useEffect(() => {
+  const fetchData = async () => {
+    try {
+      
+      const params = {
+        p1: UserActivation.username,  
+      };
 
-        if (data === "ERROR") {
-          throw new Error();
-        } else {
-          setCountNotifikasi(data[0].counting);
-        }
-      } catch {
-        setCountNotifikasi("");
+      const data = await UseFetch(
+        API_LINK + "Notifikasi/CountNotifikasi", 
+        params
+      );
+
+      if (data === "ERROR") {
+        throw new Error();
+      } else {
+        setCountNotifikasi(data[0].JumlahNotifikasiBelumDibaca);
       }
-    };
+    } catch {
+      setCountNotifikasi("");
+    }
+  };
 
-    fetchData();
-  }, []);
+  fetchData();
+}, []);
+
 
   return (
     <header role="banner">
@@ -158,7 +164,7 @@ export default function Header({ displayName, roleName, listMenu }) {
                           </ul>
                         </div>
                       </div>
-                      <div className="">
+                      {/* <div className="">
                         <p className="text-start text-white ms-3 mt-2">
                           {displayName || "Public"} ({roleName || "Public"})
                           <span
@@ -171,7 +177,7 @@ export default function Header({ displayName, roleName, listMenu }) {
                             {countNotifikasi}
                           </span>
                         </p>
-                      </div>
+                      </div> */}
                     </div>
                   ) : (
                     <a className="btn bg-white rounded-5 fw-bold" href="/login">
@@ -251,7 +257,7 @@ export default function Header({ displayName, roleName, listMenu }) {
                           backgroundColor: "#ffffff80",
                         }}
                       ></div>
-                      <div className="">
+                      { <div className="">
                         <p className="text-start text-white ms-3 mt-3">
                           {displayName || "Public"} <strong>({roleName || "Public"})</strong>
                           <span
@@ -261,10 +267,9 @@ export default function Header({ displayName, roleName, listMenu }) {
                               position: "absolute",
                             }}
                           >
-                            {countNotifikasi}
                           </span>
                         </p>
-                      </div>
+                      </div> }
                       <div className="">
                         <div className="dropdown mt-2">
                           <a
@@ -316,13 +321,36 @@ export default function Header({ displayName, roleName, listMenu }) {
                             </li>
                           </ul>
                           <a href="/notifikasi" style={{ textDecoration: "none" }}>
-                            <i
-                              className="fi fi-rr-envelope"
-                              style={{ color: "white", fontSize: "30px" }}
-                            ></i>
+                            <div style={{ position: "relative", display: "inline-block", backgroundColor: "transparent",}}>
+                              <i
+                                className="fi fi-rr-envelope"
+                                style={{ color: "white", fontSize: "30px" }}
+                              ></i>
+
+                              <span
+                                style={{
+                                  position: "absolute",
+                                  top: "-2px",  
+                                  right: "-4px",
+                                  backgroundColor: "red",
+                                  color: "white",
+                                  borderRadius: "50%",
+                                  padding: "2px 6px",
+                                  fontSize: "10px",
+                                  fontWeight: "bold",
+                                  minWidth: "18px",
+                                  height: "18px",
+                                  display: "flex",
+                                  alignItems: "center",
+                                  justifyContent: "center",
+                                  lineHeight: "1",
+                                  zIndex: 10,
+                                }}
+                              >
+                                {countNotifikasi}
+                              </span>
+                            </div>
                           </a>
-
-
                         </div>
                       </div>
                     </div>
